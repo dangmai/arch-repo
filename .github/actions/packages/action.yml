@@ -1,0 +1,5 @@
+name: 'Manage Arch repository'
+description: 'Manage Arch repository'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
