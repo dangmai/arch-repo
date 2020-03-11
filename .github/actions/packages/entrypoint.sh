@@ -21,7 +21,6 @@ echo "Installing aurutils"
 sudo pacman --noconfirm -Syu git
 git clone https://aur.archlinux.org/aurutils.git
 cd aurutils
-gpg --recv-keys 6BC26A17B9B7018A # aurutils maintainer key
 makepkg --noconfirm -si
 
 echo "Use aurutils to sync packages"
