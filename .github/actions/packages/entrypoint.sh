@@ -26,6 +26,9 @@ git clone https://aur.archlinux.org/aurutils.git
 cd aurutils
 makepkg --noconfirm -si
 
-echo "Use aurutils to sync packages"
+echo "Sync packages using aurutils"
 # Strip out comments before syncing pacakges
 grep -o '^[^#]*' /github/workspace/aur_packages.txt | xargs -I '{}' aur sync --noconfirm --noview '{}'
+
+echo "Copying artifacts to workspace"
+cp -R /home/dangmai/repo /github/workspace/

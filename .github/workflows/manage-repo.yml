@@ -16,3 +16,19 @@ jobs:
       - uses: actions/checkout@v2
       - name: Build Arch repository
         uses: ./.github/actions/packages
+      - name: Get current time
+        uses: srfrnk/current-time@master
+        id: current-time
+        with:
+          format: YYYYMMDD
+      - name: Generate build number
+        id: buildnumber
+        uses: einaregilsson/build-number@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Create Release
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: 'repo/*'
+          token: ${{ secrets.GITHUB_TOKEN }}
+          tag: '${{ steps.current-time.outputs.formattedTime }}-${{ steps.buildnumber.outputs.build_number }}'
