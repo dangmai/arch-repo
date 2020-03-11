@@ -6,7 +6,7 @@ cd /home/builduser
 
 echo "Importing GPG keys"
 # Strip out comments before importing keys
-grep -o '^[^#]*' /github/workspace/gpg_keys.txt | xargs -I '{}' gpg --recv-keys '{}'
+grep -o '^[^#]*' /github/workspace/gpg_keys.txt | xargs -I '{}' sudo gpg --recv-keys '{}'
 
 echo "Adding custom repository to Pacman configuration"
 mkdir repo
