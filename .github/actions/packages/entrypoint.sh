@@ -28,4 +28,4 @@ makepkg --noconfirm -si
 
 echo "Use aurutils to sync packages"
 # Strip out comments before syncing pacakges
-grep -o '^[^#]*' /github/workspace/gpg_keys.txt | xargs -I '{}' aur sync --noconfirm --noview '{}'
+grep -o '^[^#]*' /github/workspace/aur_packages.txt | xargs -I '{}' aur sync --noconfirm --noview '{}'
