@@ -14,9 +14,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Copy packages file to Docker image
-        run: cp aur_packages.txt ./.github/actions/packages/
-      - name: Copy GPG keys file to Docker image
-        run: cp gpg_keys.txt ./.github/actions/packages/
       - name: Build Arch repository
         uses: ./.github/actions/packages

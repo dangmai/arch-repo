@@ -6,7 +6,7 @@ cd /home/builduser
 
 echo "Importing GPG keys"
 # Strip out comments before importing keys
-grep -o '^[^#]*' gpg_keys.txt | xargs -I '{}' gpg --recv-keys '{}'
+grep -o '^[^#]*' /github/workspace/gpg_keys.txt | xargs -I '{}' gpg --recv-keys '{}'
 
 echo "Adding custom repository to Pacman configuration"
 mkdir repo
@@ -26,4 +26,4 @@ makepkg --noconfirm -si
 
 echo "Use aurutils to sync packages"
 # Strip out comments before syncing pacakges
-grep -o '^[^#]*' gpg_keys.txt | xargs -I '{}' aur sync --noconfirm --noview '{}'
+grep -o '^[^#]*' /github/workspace/gpg_keys.txt | xargs -I '{}' aur sync --noconfirm --noview '{}'
