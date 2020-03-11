@@ -31,4 +31,4 @@ echo "Sync packages using aurutils"
 grep -o '^[^#]*' /github/workspace/aur_packages.txt | xargs -I '{}' aur sync --noconfirm --noview '{}'
 
 echo "Copying artifacts to workspace"
-cp -R /home/builduser/repo /github/workspace/
+sudo cp -R /home/builduser/repo /github/workspace/
