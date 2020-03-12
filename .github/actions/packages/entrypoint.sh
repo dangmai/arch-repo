@@ -6,8 +6,7 @@ cd /home/builduser
 # Github set the HOME variable to /github/home, which the builduser does not have write access to,
 # which leads to gpg importing errors
 export HOME=/home/builduser
-# Use Zst as the compression method, the default method somehow fails with
-# certain packages with error: bsdtar (null)
+# Use Zst as the compression method, it is much faster than the default.
 export PKGEXT='.pkg.tar.zst'
 
 echo "Importing GPG keys"
