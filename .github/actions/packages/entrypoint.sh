@@ -28,7 +28,7 @@ makepkg --noconfirm -si
 
 echo "Sync packages using aurutils"
 # Strip out comments before syncing pacakges
-grep -o '^[^#]*' /github/workspace/aur_packages.txt | xargs -I '{}' aur sync --noconfirm --noview '{}'
+grep -o '^[^#]*' /github/workspace/aur_packages.txt | xargs -I '{}' df -h;aur sync --noconfirm --noview '{}'
 
 echo "Copying artifacts to workspace"
 sudo cp -R /home/builduser/repo /github/workspace/
