@@ -4,5 +4,4 @@ spotify
 slack-desktop
 visual-studio-code-bin
 sfdx-cli
-pop-gtk-theme-git
-pop-icon-theme-git
+numix-circle-icon-theme-git

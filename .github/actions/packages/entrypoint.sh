@@ -29,8 +29,10 @@ cd aurutils
 makepkg --noconfirm -si
 
 echo "Sync packages using aurutils"
-# Strip out comments before syncing pacakges
-grep -o '^[^#]*' /github/workspace/aur_packages.txt | xargs -I '{}' aur sync --noconfirm --noview '{}'
+# Strip out comments before syncing packages
+# Somehow the -L flag is necessary here for aur sync (it passes it to `makepkg`),
+# without it bsdtar cannot compress the package properly
+grep -o '^[^#]*' /github/workspace/aur_packages.txt | xargs -I '{}' aur sync -L --noconfirm --noview '{}'
 
 echo "Copying artifacts to workspace"
 sudo cp -R /home/builduser/repo /github/workspace/
