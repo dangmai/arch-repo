@@ -34,5 +34,18 @@ echo "Sync packages using aurutils"
 # without it bsdtar cannot compress the package properly
 grep -o '^[^#]*' /github/workspace/aur_packages.txt | xargs -I '{}' aur sync -L --noconfirm --noview '{}'
 
+echo "Renaming packages to workaround GitHub releases shortcoming"
+# Github Releases do not support having colon (:) in file names -
+# they automatically change it to a period, which makes the database incorrect.
+# We will work around that by changing the package names before uploading to Github.
+cd /home/build/user/repo
+for package in *.tar.zst; do
+  if [[ ${package} == *':'* ]]; then
+    PACKAGE_NAME=${package/:/.}
+    mv -- ${package} ${PACKAGE_NAME}
+    repo-add personal.db.tar ${PACKAGE_NAME}
+  fi
+done
+
 echo "Copying artifacts to workspace"
 sudo cp -R /home/builduser/repo /github/workspace/
