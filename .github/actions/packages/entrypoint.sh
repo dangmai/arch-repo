@@ -38,7 +38,7 @@ echo "Renaming packages to workaround GitHub releases shortcoming"
 # Github Releases do not support having colon (:) in file names -
 # they automatically change it to a period, which makes the database incorrect.
 # We will work around that by changing the package names before uploading to Github.
-cd /home/build/user/repo
+cd /home/builduser/repo
 for package in *.tar.zst; do
   if [[ ${package} == *':'* ]]; then
     PACKAGE_NAME=${package/:/.}
