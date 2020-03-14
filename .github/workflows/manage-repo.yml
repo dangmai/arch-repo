@@ -16,6 +16,8 @@ jobs:
       - uses: actions/checkout@v2
       - name: Build Arch repository
         uses: ./.github/actions/packages
+        env:
+          WEBDAV_URL: ${{ secrets.WEBDAV_URL }}
       - name: Upload to server
         run: ./upload.sh
         env:

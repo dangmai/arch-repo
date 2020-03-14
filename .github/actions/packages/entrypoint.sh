@@ -13,20 +13,33 @@ echo "Importing GPG keys"
 # Strip out comments before importing keys
 grep -o '^[^#]*' /github/workspace/gpg_keys.txt | xargs -I '{}' gpg --recv-keys '{}'
 
+echo "Installing aurutils"
+sudo pacman --noconfirm -Syu git cadaver
+git clone https://aur.archlinux.org/aurutils.git
+cd aurutils
+makepkg --noconfirm -si
+
 echo "Adding custom repository to Pacman configuration"
-mkdir repo
-repo-add repo/personal.db.tar
+cd /home/builduser
 sudo tee -a /etc/pacman.conf > /dev/null <<EOT
 [personal]
 SigLevel = Optional TrustAll
 Server = file:///home/builduser/repo
 EOT
-
-echo "Installing aurutils"
-sudo pacman --noconfirm -Syu git
-git clone https://aur.archlinux.org/aurutils.git
-cd aurutils
-makepkg --noconfirm -si
+mkdir repo
+echo "Downloading current repository"
+cd repo
+cadaver <<EOF
+open ${WEBDAV_URL}
+cd repo/
+mget * .
+quit
+EOF
+if [[ -f "personal.db.tar" ]]; then
+  echo "Downloading repository succeeded!"
+else
+  repo-add personal.db.tar
+fi
 
 echo "Sync packages using aurutils"
 # Strip out comments before syncing packages
