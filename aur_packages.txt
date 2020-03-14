@@ -1,7 +1,1 @@
-yay
-google-chrome
 spotify
-slack-desktop
-visual-studio-code-bin
-sfdx-cli
-numix-circle-icon-theme-git
