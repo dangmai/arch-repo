@@ -35,10 +35,10 @@ cd repo/
 mget *
 quit
 EOF
-if [[ -f "personal.db" ]]; then
+if [[ -f "personal.db.tar" ]]; then
   echo "Downloading repository succeeded!"
 else
-  repo-add personal.db
+  repo-add personal.db.tar
 fi
 sudo pacman --noconfirm -Sy
 
