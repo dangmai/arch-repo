@@ -7,7 +7,7 @@ set -euxo pipefail
 curl -X DELETE -H "Authorization: Bearer ${WEBDAV_TOKEN}" "${WEBDAV_URL}/tmp-repo"
 curl --fail -X MKCOL -H "Authorization: Bearer ${WEBDAV_TOKEN}" "${WEBDAV_URL}/tmp-repo"
 
-for file in /repo/*
+for file in repo/*
 do
   curl --fail -H "Authorization: Bearer ${WEBDAV_TOKEN}" -T ${file} "${WEBDAV_URL}/tmp-repo/${file}"
 done
