@@ -14,4 +14,4 @@ do
 done
 
 curl -X DELETE -H "Authorization: Bearer ${WEBDAV_TOKEN}" "${WEBDAV_URL}/repo"
-curl --fail -X MOVE --header "Destination:${WEBDAV_URL}/repo '${WEBDAV}/tmp-repo'
+curl --fail -X MOVE --header "Destination:${WEBDAV_URL}/repo" "${WEBDAV_URL}/tmp-repo"
