@@ -17,4 +17,4 @@ jobs:
       - name: Build Arch repository
         uses: ./.github/actions/packages
       - name: Upload to server
-        runs: ./upload.sh
+        run: ./upload.sh
