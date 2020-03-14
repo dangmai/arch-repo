@@ -40,6 +40,7 @@ if [[ -f "personal.db.tar" ]]; then
 else
   repo-add personal.db.tar
 fi
+sudo pacman --noconfirm -Sy
 
 echo "Sync packages using aurutils"
 # Strip out comments before syncing packages
