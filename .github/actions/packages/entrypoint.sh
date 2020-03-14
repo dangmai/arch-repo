@@ -32,7 +32,7 @@ cd repo
 cadaver <<EOF
 open ${WEBDAV_URL}
 cd repo/
-mget * .
+mget *
 quit
 EOF
 if [[ -f "personal.db.tar" ]]; then
