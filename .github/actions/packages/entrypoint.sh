@@ -36,6 +36,10 @@ mget *
 quit
 EOF
 if [[ -f "personal.db.tar" ]]; then
+  rm personal.db
+  ln -s personal.db.tar personal.db
+  rm personal.files
+  ln -s personal.files.tar personal.files
   echo "Downloading repository succeeded!"
 else
   repo-add personal.db.tar
