@@ -6,3 +6,9 @@ visual-studio-code-bin
 sfdx-cli
 numix-circle-icon-theme-git
 spotify
+nvm
+lastpass
+intellij-idea-ultimate-edition
+postman-bin
+pmd
+keybase-bin
