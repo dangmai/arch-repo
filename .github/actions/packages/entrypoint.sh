@@ -13,7 +13,7 @@ echo "Importing GPG keys"
 # Manually getting Spotify key
 curl -sS https://download.spotify.com/debian/pubkey.gpg | gpg --import -
 # Strip out comments before importing keys
-grep -o '^[^#]*' /github/workspace/gpg_keys.txt | xargs -I '{}' gpg --keyserver pgp.mit.edu --recv-keys '{}'
+grep -o '^[^#]*' /github/workspace/gpg_keys.txt | xargs -I '{}' gpg --keyserver hkps://pgp.mit.edu --recv-keys '{}'
 
 echo "Installing aurutils"
 sudo pacman --noconfirm -Syu git cadaver
