@@ -10,6 +10,8 @@ export HOME=/home/builduser
 export PKGEXT='.pkg.tar.zst'
 
 echo "Importing GPG keys"
+# Manually getting Spotify key
+curl -sS https://download.spotify.com/debian/pubkey.gpg | gpg --import -
 # Strip out comments before importing keys
 grep -o '^[^#]*' /github/workspace/gpg_keys.txt | xargs -I '{}' gpg --recv-keys '{}'
 
