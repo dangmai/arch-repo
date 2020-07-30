@@ -36,6 +36,7 @@ cadaver <<EOF
 open ${WEBDAV_URL}
 cd repo/
 mget *
+delete *
 quit
 EOF
 if [[ -f "personal.db.tar" ]]; then
