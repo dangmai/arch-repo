@@ -11,7 +11,7 @@ export PKGEXT='.pkg.tar.zst'
 
 echo "Importing GPG keys"
 # Manually getting Spotify key
-curl -sS https://download.spotify.com/debian/pubkey.gpg | gpg --import -
+curl -sS https://download.spotify.com/debian/pubkey_0D811D58.gpg | gpg --import -
 # Strip out comments before importing keys
 # Currently aurutils key cannot be imported, see: https://github.com/AladW/aurutils/issues/730
 # grep -o '^[^#]*' /github/workspace/gpg_keys.txt | xargs -I '{}' gpg --keyserver hkps://keyserver.ubuntu.com:443 --recv-keys '{}'
